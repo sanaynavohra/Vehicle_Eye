@@ -189,6 +189,6 @@ def process_video(input_video_path, output_video_path, model1_path, model2_path)
 # Process the video with both models
 input_video_path = "E:\\data\\traffic.mp4"
 output_video_path = 'output_video_combined.avi'
-model1_path = 'vehicle-detection_model.pt'
+model1_path = 'vehicle_detection_model.pt'
 model2_path = 'Number_plate.pt'
 process_video(input_video_path, output_video_path, model1_path, model2_path)
