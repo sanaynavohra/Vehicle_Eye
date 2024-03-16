@@ -83,7 +83,7 @@ def process_video(input_video_path, output_video_path, model1_path, model2_path)
                         cv2.rectangle(annotated_frame, (box[0], box[1]), (box[2], box[3]), (85, 45, 255), 2,
                                       lineType=cv2.LINE_AA)
                         # Display ID and confidence
-                        cv2.putText(annotated_frame, f'Conf: {confidence:.2f}', (box[0], box[1] - 10),
+                        cv2.putText(annotated_frame, f'Coqnf: {confidence:.2f}', (box[0], box[1] - 10),
                                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
 
                         # Save the unique IDs
@@ -101,33 +101,41 @@ def process_video(input_video_path, output_video_path, model1_path, model2_path)
 
                 for box, plate_id, confidence in zip(boxes, ids, confidences):
                     # Draw bounding box for the second model on the same frame
-                    cv2.rectangle(annotated_frame, (box[0], box[1]), (box[2], box[3]), (85, 45, 255), 2, lineType=cv2.LINE_AA)
-                    # Draw ID and confidence for the second model
-                    cv2.putText(
-                        annotated_frame,
-                        f"Plate ID: {plate_id}, Confidence: {confidence:.2f}",
-                        (box[0], box[1] - 10),
-                        0,
-                        0.7,
-                        [85, 45, 255],
-                        2,
-                        lineType=cv2.LINE_AA
-                    )
-
-                    # Update the plate ID counter
-                    plate_id_counter += 1
-
-                    # Update the highest confidence dynamically
-                    highest_confidence = max(highest_confidence, confidence)
+                    cv2.rectangle(annotated_frame, (box[0], box[1]), (box[2], box[3]), (85, 45, 255), 2,
+                                  lineType=cv2.LINE_AA)
 
                     # Crop the image using the bounding box coordinates
                     cropped_img = frame[box[1]:box[3], box[0]:box[2]]
 
-                    # Save the cropped image only when confidence is above the highest confidence
-                    if confidence >= highest_confidence:
-                        filename = f"cropped_img_{plate_id}conf{confidence:.2f}.jpg"
-                        filepath = os.path.join(save_path, filename)
-                        cv2.imwrite(filepath, cropped_img)
+                    # Use easyocr to extract text from the cropped image
+                    results_ocr = ocr_reader.readtext(cropped_img)
+
+                    # Display the extracted text
+                    if results_ocr:
+                        text = results_ocr[0][1]
+                        confidence = results_ocr[0][2]  # Confidence from OCR
+                        cv2.putText(
+                            annotated_frame,
+                            f" {text} , {confidence:.2f}",
+                            (box[0], box[1] - 10),
+                            cv2.FONT_HERSHEY_SIMPLEX,
+                            0.7,
+                            [85, 45, 255],
+                            2,
+                            lineType=cv2.LINE_AA
+                        )
+
+                        # Update the plate ID counter
+                        plate_id_counter += 1
+
+                        # Update the highest confidence dynamically
+                        highest_confidence = max(highest_confidence, confidence)
+
+                        # Save the cropped image only when confidence is above the highest confidence
+                        if confidence >= highest_confidence:
+                            filename = f"cropped_img_{plate_id}conf{confidence:.2f}.jpg"
+                            filepath = os.path.join(save_path, filename)
+                            cv2.imwrite(filepath, cropped_img)
 
                     # Use easyocr to extract text from the cropped image
                     results_ocr = ocr_reader.readtext(cropped_img)
@@ -179,8 +187,8 @@ def process_video(input_video_path, output_video_path, model1_path, model2_path)
         print(f"Plate ID: {unique_id}, Best Confidence: {confidence:.2f}, Best Text: {text}")
 
 # Process the video with both models
-input_video_path = "E:\\data\\1111.mp4"
+input_video_path = "E:\\data\\traffic.mp4"
 output_video_path = 'output_video_combined.avi'
-model1_path = 'vehicle_detection_model.pt'
+model1_path = 'vehicle-detection_model.pt'
 model2_path = 'Number_plate.pt'
 process_video(input_video_path, output_video_path, model1_path, model2_path)
