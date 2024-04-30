@@ -6,7 +6,7 @@
 
 ## Group Members
 
-| Name | ID | Email |
+| Name | SapID | Email |
 | ---------|----------|----------|
 |  Sanayna Vohra| 021-20-52856| Sanayna.52856@iqra.edu.pk|
 | Saadullah Khan| 021-21-55391| Saad.55391@iqra.edu.pk|
@@ -61,14 +61,14 @@ RoboFlow simplifies the organization and management of our labeled data, making 
 
 ### Vehicle
 
-![Vehicle](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/image2.jpg?raw=true)
+![Vehicle](https://github.com/sanaynavohra/Vehicle_Eye/blob/master/outputs/annoveh.png?raw=true)
 
 
 
 ### Num_plate
 
 
-![num_plate](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/image.jpg?raw=true)
+![num_plate](https://github.com/sanaynavohra/Vehicle_Eye/blob/master/outputs/annoplate.png?raw=true)
 
 
 
@@ -77,12 +77,12 @@ RoboFlow simplifies the organization and management of our labeled data, making 
 
 ### Vehicle_Detection 
 
-![Vehicle_Detection](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/veh.jpg?raw=true)
+![Vehicle_Detection](https://github.com/sanaynavohra/Vehicle_Eye/blob/master/outputs/vehh.png?raw=true)
 
 ### License_plate
 
 
-![num_plate](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/num.jpg?raw=true)
+![num_plate](https://github.com/sanaynavohra/Vehicle_Eye/blob/master/outputs/noplate.png?raw=true)
 
 ## Roboflow Custom Dataset
 
@@ -136,6 +136,8 @@ dataset = project.version(2).download("tfrecord")
 ```
 ---
  #### Model Training
+ ### Vehicle detection
+
 
  Run Training Script:
   ```python
@@ -145,19 +147,21 @@ Monitor Training:
 
 ![Training](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/training_veh.jpg?raw=true)
 
-![Training](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/image3.png?raw=true)
+![Training](https://github.com/sanaynavohra/Vehicle_Eye/blob/master/outputs/Picture2.png?raw=true)
 
-![Training](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/image4.png?raw=true)
 
-![Training](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/image5.png?raw=true)
 
-![Training](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/image8.jpeg?raw=true)
+
 
  #### Validation
  Run Validation Script:
  ```pyhton
  !yolo task=detect mode=val model= /content/drive/MyDrive/vehicle_detection_training/runs/detect/train/weights/best.pt  data={dataset.location}/data.yaml
+  
  ```
+
+ ![Training](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/image4.png?raw=true)
+
  #### Inference
  Run Inference Script:
 ```python
@@ -220,22 +224,15 @@ Monitor Training:
 
 ![Training](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/num_plate/1.jpg?raw=true)
 
-![Training](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/num_plate/2.png?raw=true)
+![Training](https://github.com/sanaynavohra/Vehicle_Eye/blob/master/outputs/confusionmat.png?raw=true)
 
-
-![Training](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/num_plate/3.png?raw=true)
-
-![Training](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/num_plate/4.png?raw=true)
-
-![Training](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/num_plate/5.jpeg?raw=true)
-
-![Training](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/num_plate/6.jpeg?raw=true)
 
  #### Validation
  Run Validation Script:
  ```pyhton
 !yolo task=detect mode=val model=  data={dataset.location}/data.yaml/content/drive/MyDrive/NO_PLATE/runs/detect/train/weights/best.pt
  ```
+ ![Training](https://github.com/sanaynavohra/Vehicle_Eye/blob/master/outputs/licenseplate.jpeg?raw=true)
  
  #### Inference
  Run Inference Script:
