@@ -91,7 +91,7 @@ https://universe.roboflow.com/customdataset-0fkml/vehicle_detection-uey8e
 
 2. #### license_plate
 https://universe.roboflow.com/customdataset-0fkml/license_plate-ahokr
-## Model Training
+#### Model Training
 
 ### Vehicle Detection
 
@@ -143,13 +143,8 @@ dataset = project.version(2).download("tfrecord")
   ```python
   !yolo task=detect mode=train model=yolov8m.pt data={dataset.location}/data.yaml epochs=100 imgsz=640
   ```
-Monitor Training:
-
-![Training](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/training_veh.jpg?raw=true)
 
 ![Training](https://github.com/sanaynavohra/Vehicle_Eye/blob/master/outputs/Picture2.png?raw=true)
-
-
 
 
 
@@ -160,15 +155,13 @@ Monitor Training:
   
  ```
 
- ![Training](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/image4.png?raw=true)
-
  #### Inference
  Run Inference Script:
 ```python
 !yolo task=detect mode=predict model= /content/drive/MyDrive/vehicle_detection_training/runs/detect/train/weights/best.pt conf=0.25 source='/content/drive/MyDrive/vehicle_detection_training/data/bike (17).jpg'
 ```
 Result
-![Training](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/image9.jpeg?raw=true)
+![Training](https://github.com/sanaynavohra/Vehicle_Eye/blob/master/outputs/Picture5.png?raw=true)
 
 ---
 
@@ -220,9 +213,7 @@ dataset = project.version(6).download("yolov8")
   ```python
  !yolo task=detect mode=train model=yolov8m.pt data={dataset.location}/data.yaml epochs=150 imgsz=640
   ```
-Monitor Training:
 
-![Training](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/num_plate/1.jpg?raw=true)
 
 ![Training](https://github.com/sanaynavohra/Vehicle_Eye/blob/master/outputs/confusionmat.png?raw=true)
 
@@ -240,7 +231,7 @@ Monitor Training:
 !yolo task=detect mode=predict model=/content/drive/MyDrive/NO_PLATE/runs/detect/train/weights/best.pt  conf=0.25 source='/content/drive/MyDrive/NO_PLATE/IMG_4949.JPG'
 ```
 Result
-![Training](https://github.com/sanaynavohra/Vehicle-Eye/blob/main/New%20folder/num_plate/7.jpeg?raw=true)
+![Training](https://github.com/sanaynavohra/Vehicle_Eye/blob/master/outputs/Picture6.png?raw=true)
 
 
 
