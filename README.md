@@ -3,17 +3,6 @@
 
 ### Vehicle 👁️
 
-
-## Group Members
-
-| Name | SapID | Email |
-| ---------|----------|----------|
-|  Sanayna Vohra| 021-20-52856| Sanayna.52856@iqra.edu.pk|
-| Saadullah Khan| 021-21-55391| Saad.55391@iqra.edu.pk|
-| Sultan Abdullah Siddiqui| 021-21-55170| Sultan.55170@iqra.edu.pk|
-
-
-
 ## Project Overview
 
 Welcome to the Vehicle Detection, Number Plate Recognition, and Vehicle Counting (VDNVR) system, this project presents a cutting-edge solution powered by Computer Vision and Deep Learning techniques. 
